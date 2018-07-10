@@ -6,18 +6,19 @@
     <description>Recent content on THERE IS NO DATA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Jul 2018 13:48:00 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 10 Jul 2018 13:48:00 -0500</lastBuildDate>
     
 	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>My First Post</title>
+      <title>An Analysis of the MTA data set</title>
       <link>http://example.org/posts/my-first-post/</link>
-      <pubDate>Thu, 05 Jul 2018 13:48:00 -0500</pubDate>
+      <pubDate>Tue, 10 Jul 2018 13:48:00 -0500</pubDate>
       
       <guid>http://example.org/posts/my-first-post/</guid>
-      <description>HEYYYY</description>
+      <description>An Analysis of the MTA data set Overview of analysis
+ Manipulate and clean MTA data Collect and clean Tech Business Data Collect and clean IRS Charitable Contribution Data Find intersections and results  Manipulate and clean MTA data The data set is from all of April 2018 and consists of approximately 800,000 rows. The data was cleaned by searching for null values and also when the counter was reset.</description>
     </item>
     
   </channel>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>THERE IS NO DATA  | My First Post</title>
+    <title>THERE IS NO DATA  | An Analysis of the MTA data set</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -28,18 +28,17 @@
 
     
 
-    <meta property="og:title" content="My First Post" />
-<meta property="og:description" content="HEYYYY" />
+    <meta property="og:title" content="An Analysis of the MTA data set" />
+<meta property="og:description" content="An Analysis of the MTA data set Overview of analysis
+ Manipulate and clean MTA data Collect and clean Tech Business Data Collect and clean IRS Charitable Contribution Data Find intersections and results  Manipulate and clean MTA data The data set is from all of April 2018 and consists of approximately 800,000 rows. The data was cleaned by searching for null values and also when the counter was reset." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://example.org/posts/my-first-post/" />
 
 
 
-<meta property="article:published_time" content="2018-07-05T13:48:00-05:00"/>
+<meta property="article:published_time" content="2018-07-10T13:48:00-05:00"/>
 
-<meta property="article:modified_time" content="2018-07-05T13:48:00-05:00"/>
-
-
+<meta property="article:modified_time" content="2018-07-10T13:48:00-05:00"/>
 
 
 
@@ -49,20 +48,24 @@
 
 
 
-<meta itemprop="name" content="My First Post">
-<meta itemprop="description" content="HEYYYY">
 
 
-<meta itemprop="datePublished" content="2018-07-05T13:48:00-05:00" />
-<meta itemprop="dateModified" content="2018-07-05T13:48:00-05:00" />
-<meta itemprop="wordCount" content="1">
+<meta itemprop="name" content="An Analysis of the MTA data set">
+<meta itemprop="description" content="An Analysis of the MTA data set Overview of analysis
+ Manipulate and clean MTA data Collect and clean Tech Business Data Collect and clean IRS Charitable Contribution Data Find intersections and results  Manipulate and clean MTA data The data set is from all of April 2018 and consists of approximately 800,000 rows. The data was cleaned by searching for null values and also when the counter was reset.">
+
+
+<meta itemprop="datePublished" content="2018-07-10T13:48:00-05:00" />
+<meta itemprop="dateModified" content="2018-07-10T13:48:00-05:00" />
+<meta itemprop="wordCount" content="486">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="My First Post"/>
-<meta name="twitter:description" content="HEYYYY"/>
+<meta name="twitter:title" content="An Analysis of the MTA data set"/>
+<meta name="twitter:description" content="An Analysis of the MTA data set Overview of analysis
+ Manipulate and clean MTA data Collect and clean Tech Business Data Collect and clean IRS Charitable Contribution Data Find intersections and results  Manipulate and clean MTA data The data set is from all of April 2018 and consists of approximately 800,000 rows. The data was cleaned by searching for null values and also when the counter was reset."/>
 
   </head>
 
@@ -108,12 +111,115 @@
           
         POSTS
       </p>
-      <h1 class="f1 athelas mb1">My First Post</h1>
+      <h1 class="f1 athelas mb1">An Analysis of the MTA data set</h1>
       
-      <time class="f6 mv4 dib tracked" datetime="2018-07-05T13:48:00-05:00">July 5, 2018</time>
+      <time class="f6 mv4 dib tracked" datetime="2018-07-10T13:48:00-05:00">July 10, 2018</time>
     </header>
 
-    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>HEYYYY</p>
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
+
+<h1 id="an-analysis-of-the-mta-data-set">An Analysis of the MTA data set</h1>
+
+<p>Overview of analysis</p>
+
+<ol>
+<li>Manipulate and clean MTA data</li>
+<li>Collect and clean Tech Business Data</li>
+<li>Collect and clean IRS Charitable Contribution Data</li>
+<li>Find intersections and results</li>
+</ol>
+
+<h2 id="manipulate-and-clean-mta-data">Manipulate and clean MTA data</h2>
+
+<p>The data set is from all of April 2018 and consists of approximately 800,000 rows.
+The data was cleaned by searching for null values and also when the counter was reset.</p>
+
+<p>The data columns look as follows:</p>
+
+<table>
+<thead>
+<tr>
+<th>C/A</th>
+<th>UNIT</th>
+<th>SCP</th>
+<th>STATION</th>
+<th>LINENAME</th>
+<th>DIVISION</th>
+<th>DATE</th>
+<th>TIME</th>
+<th>DESC</th>
+<th>ENTRIES</th>
+<th>EXITS</th>
+</tr>
+</thead>
+
+<tbody>
+</tbody>
+</table>
+
+<p>Because some of the times were 00:00:00, the data was formatted by subtracting a minute to
+keep the entries with the correct date. This new date was put in a separate column.</p>
+
+<p>The next step was to map the data to zip codes. This was done by using a data set [0] that
+had UNIT and coordinates. Then the Geopy python library was used to map coordinates to a zip.
+This data was output to a csv file.</p>
+
+<p>As a data check to see if UNIT was unique, the formatted data was imported into mySQL. Then
+using SQL queries it was found that UNIT is unique enough to move forward and group by later on.</p>
+
+<p>Another table was created within the database and then JOIN ON unit could be performed to produce
+a new set of data that included the ZIP code in the rows. This query was output into a csv file
+to be consumed by Pandas.</p>
+
+<p>Output columns:
+| UNIT | STATION | DATE_STAMP | TIME_STAMP | ZIP | INCREMENTAL_PPL |
+|&mdash;&mdash;|&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;|&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|</p>
+
+<h2 id="collect-and-clean-tech-business-data">Collect and clean Tech Business Data</h2>
+
+<p>In order to understand popular tech businesses, the website startupguide.nyc was scraped using
+BeautifulSoup. The URLs of the businesses were collected and through some text manipulation were
+queried against Google&rsquo;s Places API to retrieve the businesse&rsquo;s ZIP code. This data was saved
+as a csv file for later consumption.</p>
+
+<p>Output columns:
+| BUSINESS NAME | ZIP CODE |
+|&mdash;&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;-|</p>
+
+<h2 id="collect-and-clean-irs-charitable-contribution-data">Collect and clean IRS Charitable Contribution Data</h2>
+
+<p>This data set contains several columns of data that is not needed. It was filtered by New York
+City Zip codes and % charitable contributions.</p>
+
+<p>Output columns:
+| ZIPCODE | PCT_DONORS |
+|&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;|</p>
+
+<h2 id="find-intersections-and-results">Find intersections and results</h2>
+
+<p>Visuals were made using MapBox. The first step was to produce a choropleth with NYC zip codes
+and donor density. In order to do this a geoJSON file was created that shows the shapes of the
+zip codes along with density * 100. This was imported into MapBox along with the zip codes.</p>
+
+<p>Result:</p>
+
+<p><img src="https://user-images.githubusercontent.com/2447940/42537360-43a4fee6-845a-11e8-9be1-daa8d10fa291.png" width="600"/></p>
+
+<p>Next, the businesses were plotted over the map by importing the previously generated CSV.</p>
+
+<p>Result:</p>
+
+<p><img src="https://user-images.githubusercontent.com/2447940/42537400-5fd00c50-845a-11e8-82c6-084270fd88b8.png" width="600" /></p>
+
+<p>Lastly, the MTA station locations layer was added by parsing the JSON from above and generating
+a CSV.</p>
+
+<p>Result:</p>
+
+<p><img src="https://user-images.githubusercontent.com/2447940/42537435-79c8d632-845a-11e8-89ec-039ec9985d8c.png" width="600" /></p>
+
+<p>From here, we can see that focusing on the Chelsea area is a good site to go to in order to
+get donors to not for profit tech empowerment institutions.</p>
 <ul class="pa0">
   
 </ul>
